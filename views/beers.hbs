@@ -1,1 +1,8 @@
-<p> works</p>
+<div>
+  {{#each beers}}
+    <img src="{{image_url}}" alt="{{tagline}}">
+    <h2>{{name}}</h2>
+    <p><span>{{tagline}}</span></p>
+    <p>{{description}}</p>
+  {{/each}}
+</div>

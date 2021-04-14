@@ -22,8 +22,17 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get("/beers", (req, res) => {
-  res.render("beers");
-})
+app.get('/beers', (req, res) => {
+  punkAPI
+   .getBeers()
+   .then(beers =>{
+    console.log("Beers list is ready");
+    console.log(beers)
+    res.render("beers", { beers } );
+   })
+    .catch(err => {
+      console.log("Error ", err);
+    });
+});
 
-app.listen(5000, () => console.log('🏃‍ on port 5000'));
+app.listen(3000, () => console.log('🏃‍ on port 3000'));
