@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 
 const hbs = require('hbs');
@@ -34,5 +35,17 @@ app.get('/beers', (req, res) => {
       console.log("Error ", err);
     });
 });
+
+app.get("/random-beer", (req, res) => {
+  punkAPI
+    .getRandom()
+    .then(randomBeer => {
+      console.log(randomBeer)
+      res.render("randomBeer", { randomBeer })
+    })
+    .catch(err => {
+      console.log("Error ", err)
+    })
+})
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
